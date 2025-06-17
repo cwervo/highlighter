@@ -1,0 +1,70 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+#cameraFeed {
+    display: block; /* Initially block, will be hidden after capture for canvas view */
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    background-color: #333;
+    border: 1px solid #555;
+    margin-bottom: 10px;
+}
+
+#imageCanvas {
+    display: block; /* Will be primary view after capture */
+    width: 100%;
+    max-width: 640px; /* Same as video feed for consistency */
+    height: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: crosshair; /* Indicate it's interactive for selection */
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#highlightingModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 300px;
+    border-radius: 8px;
+}
+
+/* Styles for the selection rectangle are handled via canvas drawing in JS,
+   but if we had separate div overlays, they would go here. */
+
+/* Basic responsive considerations */
+@media (max-width: 700px) {
+    #cameraFeed, #imageCanvas {
+        max-width: 95%;
+    }
+}
